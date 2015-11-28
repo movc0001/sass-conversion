@@ -1,1 +1,253 @@
 // main SASS file
+@import "_variables.scss";
+@import "_queries.scss";
+@import "_mixins.scss";
+//clearfix extensions
+* {
+	padding: 0;
+	margin: 0;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+*:after,
+*:before {
+	-webkit-box-sizing: inherit;
+	box-sizing: inherit;
+}
+
+html {
+	font-size: 16px;
+	font-family: $font-default;
+	line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	font-family: $font-headings;
+}
+
+ul {
+	list-style: none;
+}
+
+
+/***********************************************
+                SPECIAL
+***********************************************/
+
+
+/***********************************************
+                LAYOUT
+***********************************************/
+
+.bg-header {
+	background-color: $color-white;
+	background-color: $color-lightblue;
+	color: $color-darkgrey;
+	border-bottom: 1rem solid $color-medblue;
+	border-top: 1rem solid $color-darkblue;
+	position: relative;
+	:before,
+	:after {
+		content: "";
+		position: absolute;
+		bottom: -1rem;
+		width: 30%;
+		height: 1rem;
+		background-color: $color-darkblue;
+	}
+	:before {
+		left: 0;
+	}
+	:after {
+		right: 0;
+	}
+	@extend clearfix;
+}
+
+.bg-focal {
+	@include bg($color-lightbrown, $color-darkbrown);
+	@extend clearfix;
+}
+
+.bg-content1 {
+	@include bg ($color-white, $color-darkgrey);
+	@include clearfix;
+}
+
+.bg-content2 {
+	@include bg ($color-lightblue, $color-darkblue)
+}
+
+.bg-footer {
+	@include bg ($color-white, $color-lightgrey);
+	@include clearfix;
+}
+
+header {
+	@include header (400px, 0 auto);
+	position: relative;
+	h1 {
+		width: 100%;
+		padding: 0 2rem;
+	}
+	nav {
+		width: 100%;
+		ul li {
+			width: 100%;
+			float: none;
+		}
+	}
+}
+
+section {
+	.focal {
+		@include header (400px, 0 auto)
+	}
+	.content1 {
+		padding: 2rem 0;
+	}
+	.content2 {
+		padding: 2rem 0;
+	}
+}
+
+.row {
+	clear: both;
+}
+
+.col-2 {
+	width: 50%;
+	float: left;
+	padding-bottom: 2rem;
+	border-left: 1px solid #3a5E63;
+	margin-bottom: 2rem;
+}
+
+footer {
+	padding: 2rem 0;
+	p:last-child {}
+	&.col-2:first-child {
+		border-left: 0;
+	}
+}
+
+
+/***********************************************
+                NAVIGATION
+***********************************************/
+
+header {
+	nav {
+		padding: 2rem 0;
+		clear: both;
+		ul>li>a {
+			display: block;
+			text-align: center;
+			text-decoration: none;
+			color: $color-darkgrey;
+			font-size: 1.414rem;
+			letter-spacing: 0.25rem;
+			border: 1px solid $color-lightgrey;
+			border-bottom: none;
+			padding: 1.0rem 2rem;
+			line-height: 1;
+			background-color: $color-white;
+			:hover {
+				font-weight: 700;
+				color: $color-darkbrown;
+			}
+		}
+	}
+}
+
+
+/***********************************************
+                CONTENT
+***********************************************/
+
+header h1 {
+	color: $color-darkbrown;
+	letter-spacing: 0.1rem;
+	i.fa-lg {
+		display: block;
+		width: 25%;
+		float: left;
+		font-size: 7rem;
+		line-height: 12.7936rem;
+		color: $color-lightbrown;
+		~ span {
+			@include span (0.1rem, 3.998rem, right, right);
+			width: 75%;
+			padding-left: 1rem;
+		}
+	}
+}
+
+.focal {
+	h2 {
+		@include fsize-pad (1.999rem, 2rem 2rem 1rem 2rem);
+		line-height: 1.2;
+	}
+	.author {
+		@include fsize-pad (1rem, 0.2rem 2rem 2rem);
+	}
+}
+
+.content {
+	h3 {
+		@include fsize-pad (1.999rem, 0.2rem 2rem 2rem);
+		i {
+			vertical-align: middle;
+			padding-right: 2rem;
+		}
+	}
+	p {
+		@include fsize-pad (1.414rem, 0.5rem 2rem 2rem);
+	}
+}
+
+.content2 {
+	h3 {
+		@include fsize-pad ( 1.999rem, 1rem 2rem 0.5rem);
+	}
+	h4 {
+		@include fsize-pad ( 1.999rem, 1rem 2rem 0rem);
+	}
+	p {
+		@include fsize-pad (1.414rem, 0.5rem 2rem 1rem);
+	}
+	li {
+		@include fsize-pad (1.414rem, 0.5rem 2rem);
+	}
+}
+
+
+/***********************************************
+                FOOTER
+***********************************************/
+
+footer {
+	h4 {
+		@include fsize-pad (1.414rem, 0.5rem 2rem);
+		color: $color-darkbrown;
+		[lang=de] {
+			display: block;
+		}
+		[lang=en],
+		[lang=ar],
+		[lang=ru] {
+			display: none;
+		}
+	}
+	p {
+		@include fsize-pad (1, 0.5rem 2rem);
+		color: $color-darkgrey;
+	}
+	.fa-circle {
+		color: $color-darkgrey;
+	}
+}

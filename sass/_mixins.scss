@@ -1,0 +1,72 @@
+@mixin tablet() {
+	@media all and (min-width: $smallBP)and (max-width: $medBP) {
+		@content;
+	}
+}
+
+@mixin laptop() {
+	@media all and (min-width: $medBP) and(max-width: $largeBP) {
+		@content;
+	}
+}
+
+@mixin tv() {
+	@media all and(min-width: $largeBP) {
+		@content;
+	}
+}
+
+@mixin header ($width, $margin:0 auto) {
+	width: $width;
+	margin: $margin;
+}
+
+@mixin bg ($background-color, $color) {
+	background-color: $background-color;
+	color: $color;
+}
+
+@mixin fsize-pad ($fsize, $padding) {
+	font-size: $fsize;
+	padding: $padding;
+}
+
+@mixin color-width ($color, $width:100%) {
+	width: $width;
+	color: $color;
+}
+
+@mixin col ($width, $marleft, $float:left) {
+	float: $float;
+	width: $width;
+	margin-left: $marleft;
+}
+
+@mixin fsize-fweight($fsize, $fweight) {
+	font-size: $fsize;
+	font-weight: $fweight;
+}
+
+@mixin clearfix {
+	&:after {
+		display: table;
+		clear: both;
+		content: "";
+	}
+}
+
+@mixin equalSpaced ($num_of_cols, $spacing, $width:100%) {
+	width: ( $width - ( $spacing * ($num_of_cols - 1))) / $num_of_cols;
+	margin-left: $spacing;
+	&:first-child {
+		margin-left: 0;
+		float: left;
+	}
+}
+
+@mixin span ($lspace, $fontsize, $text-allign: left, $float:none) {
+	float: $float;
+	letter-spacing: $lspace;
+	font-size: $fontsize;
+	text-align: $text-allign;
+}
