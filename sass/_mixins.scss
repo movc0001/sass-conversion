@@ -1,17 +1,17 @@
-@mixin tablet() {
-	@media all and (min-width: $smallBP)and (max-width: $medBP) {
+@mixin tablet {
+	@media all and (min-width: $smallBP) and (max-width: $medBP) {
 		@content;
 	}
 }
 
-@mixin laptop() {
-	@media all and (min-width: $medBP) and(max-width: $largeBP) {
+@mixin laptop {
+	@media all and (min-width: $medBP+1) and(max-width: $largeBP) {
 		@content;
 	}
 }
 
-@mixin tv() {
-	@media all and(min-width: $largeBP) {
+@mixin tv {
+	@media all and(min-width: $largeBP+1) {
 		@content;
 	}
 }
@@ -47,20 +47,13 @@
 	font-weight: $fweight;
 }
 
-@mixin clearfix {
-	&:after {
-		display: table;
-		clear: both;
-		content: "";
-	}
-}
-
 @mixin equalSpaced ($num_of_cols, $spacing, $width:100%) {
 	width: ( $width - ( $spacing * ($num_of_cols - 1))) / $num_of_cols;
 	margin-left: $spacing;
+	float: left;
 	&:first-child {
 		margin-left: 0;
-		float: left;
+		
 	}
 }
 

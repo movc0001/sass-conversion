@@ -1,168 +1,167 @@
-	.fa-lg {
-		display: inline;
-		vertical-align: baseline;
-		float: none;
-		font-size: 4rem;
-		line-height: 6.3968rem;
-	}
-	
-	.nav {
-		position: static;
-		clear: both;
-		width: 100%;
-		padding: 0;
-	}
-	
-	@include tablet() {
-		header {
-			@include header (700px, 0 auto);
-			h1 {
-				@include color-width ($color-darkbrown);
-				i.fa-lg {
-					@extend .fa-lg;
-					color: $color-darkbrown;
-					~ span {
-						@ include span (0.25rem, 3.998rem);
-					}
+@include tablet {
+	header {
+		@include header (700px, 0 auto);
+		min-height: 8rem;
+		h1 {
+			@include color-width ($color-darkbrown);
+			i.fa-lg {
+				display: inline;
+				vertical-align: baseline;
+				float: none;
+				font-size: 4rem;
+				line-height: 6.3968rem;
+				color: $color-darkbrown;
+				~ span {
+					@include span (0.25rem, 3.998rem);
 				}
 			}
-			:before,
-			:after {
-				width: 230px;
-			}
-			nav {
-				@extend .nav;
-				ul>li {
-					width: 20%;
-					float: left;
-					a {
-						@include fsize-pad (1rem, 1.0rem);
-						line-height: 2rem;
-						min-height: 6rem;
-						border: none;
-						border-left: 1px solid $color-lightgrey;
-						background-color: $color-white;
-						:last-child {
-							border-right: 1px solid $color-lightgrey;
-						}
+		}
+		:before,
+		:after {
+			width: 230px;
+		}
+		nav {
+			position: static;
+			clear: both;
+			width: 100%;
+			padding: 0;
+			&>ul>li {
+				width: 20%;
+				float: left;
+				&>a {
+					@include fsize-pad (1rem, 1.0rem);
+					line-height: 2rem;
+					min-height: 6rem;
+					border: none;
+					border-left: 1px solid $color-lightgrey;
+					background-color: $color-white;
+					:last-child {
+						border-right: 1px solid $color-lightgrey;
 					}
 				}
 			}
 		}
-		section.focal,
-		section.content1,
-		section.content2,
-		footer {
-			@include header (700px)
+	}
+	section.focal,
+	section.content1,
+	section.content2,
+	footer {
+		@include header (700px)
+	}
+	.col-4 {
+		width: 50%;
+		float: left;
+	}
+	section.content2 {
+		h4 {
+			font-size: 1.414rem;
 		}
-		.col-4 {
-			width: 50%;
-			float: left;
+		li {
+			font-size: 1.414rem;
 		}
-		section.content2 {
+	}
+	footer {
+		.fa-circle {
+			color: $color-medblue;
+		}
+		.col-2:last-child {
+			unicode-bidi: bidi-override;
+			direction: rtl;
+		}
+		h4[lang=ar] {
+			display: block;
+		}
+		h4[lang=de],
+		h4[lang=en],
+		h4[lang=ru] {
+			display: none;
+		}
+	}
+}
+
+@include laptop {
+	header {
+		@include header (900px);
+		:before,
+		:after {
+			width: 300px;
+		}
+		h1 {
+			@include color-width ($color-darkblue);
+			i.fa-lg {
+				display: inline;
+				vertical-align: baseline;
+				float: none;
+				font-size: 4rem;
+				line-height: 6.3968rem;
+				color: $color-darkblue;
+				~ span {
+					@include span (0.25rem, 3.998rem);
+				}
+			}
+		}
+		nav {
+			position: static;
+			clear: both;
+			width: 100%;
+			padding: 0;
+			&>ul>li {
+				width: 20%;
+				float: left;
+				background-color: $color-white;
+				&>a {
+					@include fsize-pad(1rem, 0 1.0rem);
+					line-height: 2rem;
+					min-height: 2rem;
+					border: none;
+					border-left: 1px solid $color-lightgrey;
+					margin: 1.0rem 0;
+					background-color: $color-white;
+				}
+				:first-child a {
+					border-left: none;
+				}
+			}
+		}
+	}
+	section {
+		&.focal,
+		&.content1,
+		&.content2,
+		{
+			@include header(900px);
+		}
+		&.focal h2 {
+			@include header(600px);
+		}
+		&.focal p.author {
+			@include header(600px);
+		}
+		&.content1 h3 {
+			@include fsize-fweight (1.999rem, 100);
+			.fa-2x {
+				font-size: 1.999rem;
+				padding-right: 1rem;
+			}
+		}
+		&content2 {
 			h4 {
 				font-size: 1.414rem;
+			}
+			p {
+				@include fsize-fweight (1rem, 400);
 			}
 			li {
 				font-size: 1.414rem;
 			}
 		}
-		footer {
-			.fa-circle {
-				color: $color-medblue;
-			}
-			.col-2:last-child {
-				unicode-bidi: bidi-override;
-				direction: rtl;
-			}
-			h4[lang=ar] {
-				display: block;
-			}
-			h4[lang=de],
-			h4[lang=en],
-			h4[lang=ru] {
-				display: none;
-			}
-		}
 	}
-	
-	@include (laptop) {
-		header {
-			@include header (900px);
-			:before,
-			:after {
-				width: 300px;
-			}
-			h1 {
-				@include ($color-darkblue);
-				i.fa-lg {
-					@extend .fa-lg;
-					color: $color-darkblue;
-					~ span {
-						@ include span (0.25rem, 3.998rem);
-					}
-				}
-			}
-			nav {
-				@extend .nav;
-				ul>li {
-					width: 20%;
-					float: left;
-					background-color: $color-white;
-					:first-child a {
-						border-left: none;
-					}
-					a {
-						@include fsize-pad(1rem, 0 1.0rem);
-						line-height: 2rem;
-						min-height: 2rem;
-						border: none;
-						border-left: 1px solid $color-lightgrey;
-						margin: 1.0rem 0;
-						background-color: $color-white;
-					}
-				}
-			}
-		}
-		section {
-			.focal,
-			.content1,
-			.content2 {
-				@include header(900px);
-			}
-			.focal h2 {
-				@include header(600px);
-			}
-			.focal p.author {
-				@include header(600px);
-			}
-			.content1 h3 {
-				@include fsize-fweight (1.999rem, 100);
-				.fa-2x {
-					font-size: 1.999rem;
-					padding-right: 1rem;
-				}
-			}
-			content2 {
-				h4 {
-					font-size: 1.414rem;
-				}
-				p {
-					@include fsize-fweight (1rem, 400);
-				}
-				li {
-					font-size: 1.414rem;
-				}
-			}
-			.col-3 {
-				@include equalSpaced (3, 5%);
-			}
-			.col-4 {
-				@include equalSpaced (4, 4%);
-			}
-		}
+	.col-3 {
+		@include equalSpaced (3, 5%);
 	}
-	
+	.col-4 {
+		@include equalSpaced (4, 4%);
+	}
 	footer {
 		@include header (900px);
 		.fa-circle {
@@ -180,28 +179,38 @@
 		}
 	}
 }
-@include tv() {
-	@include header (1400px, 0 auto) header:before,
-	header:after {
-		width: 450px;
-	}
-	
-	header h1 {
-		@mixin color-width ($color-darkbrown);
-		i.fa-lg {
-			@extend .fa-lg;
-			color: $color-darkbrown;
-			~ span {
-				@ include span (0.25rem, 3.998rem);
+
+@include tv {
+	header {
+		@include header (1400px, 0 auto);
+		:before,
+		:after {
+			width: 450px;
+		}
+		h1 {
+			@include color-width ($color-darkbrown);
+			i.fa-lg {
+				display: inline;
+				vertical-align: baseline;
+				float: none;
+				font-size: 4rem;
+				line-height: 6.3968rem;
+				color: $color-darkbrown;
+				~ span {
+					@include span (0.25rem, 3.998rem);
+				}
 			}
 		}
 		nav {
-			@extend .nav;
-			ul>li {
+			position: static;
+			clear: both;
+			width: 100%;
+			padding: 0;
+			&>ul>li {
 				width: 20%;
 				float: left;
 				background-color: $color-white;
-				a {
+				&>a {
 					font-size: 1.414rem;
 					line-height: 2rem;
 					min-height: 2rem;
@@ -217,16 +226,14 @@
 			}
 		}
 	}
-	
 	section.focal,
 	section.content1,
 	section.content2,
 	footer {
 		@include header (1400px);
 	}
-	
 	section {
-		.focal {
+		&.focal {
 			h2 {
 				font-size: 3.998rem;
 				@include header (600px);
@@ -235,7 +242,7 @@
 				@include header (600px);
 			}
 		}
-		.content1 h3 {
+		&.content1 h3 {
 			@include fsize-fweight (2.827rem, 100);
 			.fa-2x {
 				font-size: 2.827rem;
@@ -243,7 +250,7 @@
 				vertical-align: middle;
 			}
 		}
-		.content2 {
+		&.content2 {
 			h4 {
 				font-size: 1.999rem;
 			}
@@ -254,32 +261,33 @@
 				@include fsize-fweight (1.414rem, 400);
 			}
 		}
-		.col-3 {
-			@include equalSpaced (3, 5%);
-		}
-		.col-4 {
-			@include equalSpaced (4, 4%);
-		}
-		footer {
-			p {
-				font-size: 1.414rem;
-				letter-spacing: 0.2rem;
-				p:last-child {
-					color: $color-lightgrey;
-				}
+	}
+	.col-3 {
+		@include equalSpaced (3, 5%);
+	}
+	.col-4 {
+		@include equalSpaced (4, 4%);
+	}
+	footer {
+		p {
+			font-size: 1.414rem;
+			letter-spacing: 0.2rem;
+			:last-child {
+				color: $color-lightgrey;
 			}
-			.fa-circle {
-				color: $color-medblue;
+		}
+		.fa-circle {
+			color: $color-medblue;
+		}
+		h4 {
+			[lang=en] {
+				display: block;
 			}
-			h4 {
-				[lang=en] {
-					display: block;
-				}
-				[lang=de],
-				[lang=ar],
-				[lang=ru] {
-					display: none;
-				}
+			[lang=de],
+			[lang=ar],
+			[lang=ru] {
+				display: none;
 			}
 		}
 	}
+}

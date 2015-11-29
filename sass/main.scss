@@ -1,19 +1,10 @@
-// main SASS file
 @import "_variables.scss";
-@import "_queries.scss";
 @import "_mixins.scss";
-//clearfix extensions
 * {
 	padding: 0;
 	margin: 0;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
-}
-
-*:after,
-*:before {
-	-webkit-box-sizing: inherit;
-	box-sizing: inherit;
 }
 
 html {
@@ -37,6 +28,12 @@ ul {
 /***********************************************
                 SPECIAL
 ***********************************************/
+
+.clearfix:after {
+	display: table;
+	clear: both;
+	content: "";
+}
 
 
 /***********************************************
@@ -65,17 +62,14 @@ ul {
 	:after {
 		right: 0;
 	}
-	@extend clearfix;
 }
 
 .bg-focal {
 	@include bg($color-lightbrown, $color-darkbrown);
-	@extend clearfix;
 }
 
 .bg-content1 {
 	@include bg ($color-white, $color-darkgrey);
-	@include clearfix;
 }
 
 .bg-content2 {
@@ -84,33 +78,35 @@ ul {
 
 .bg-footer {
 	@include bg ($color-white, $color-lightgrey);
-	@include clearfix;
 }
 
 header {
 	@include header (400px, 0 auto);
 	position: relative;
-	h1 {
-		width: 100%;
-		padding: 0 2rem;
-	}
-	nav {
-		width: 100%;
-		ul li {
-			width: 100%;
-			float: none;
-		}
-	}
+}
+
+header h1 {
+	width: 100%;
+	padding: 0 2rem;
+}
+
+header nav {
+	width: 100%;
+}
+
+header nav>ul li {
+	width: 100%;
+	float: none;
 }
 
 section {
-	.focal {
+	&.focal {
 		@include header (400px, 0 auto)
 	}
-	.content1 {
+	&.content1 {
 		padding: 2rem 0;
 	}
-	.content2 {
+	&.content2 {
 		padding: 2rem 0;
 	}
 }
@@ -130,7 +126,7 @@ section {
 footer {
 	padding: 2rem 0;
 	p:last-child {}
-	&.col-2:first-child {
+	.col-2:first-child {
 		border-left: 0;
 	}
 }
@@ -144,7 +140,7 @@ header {
 	nav {
 		padding: 2rem 0;
 		clear: both;
-		ul>li>a {
+		&>ul>li>a {
 			display: block;
 			text-align: center;
 			text-decoration: none;
@@ -163,11 +159,6 @@ header {
 		}
 	}
 }
-
-
-/***********************************************
-                CONTENT
-***********************************************/
 
 header h1 {
 	color: $color-darkbrown;
@@ -197,7 +188,7 @@ header h1 {
 	}
 }
 
-.content {
+.content1 {
 	h3 {
 		@include fsize-pad (1.999rem, 0.2rem 2rem 2rem);
 		i {
@@ -244,10 +235,17 @@ footer {
 		}
 	}
 	p {
-		@include fsize-pad (1, 0.5rem 2rem);
+		@include fsize-pad (1rem, 0.5rem 2rem);
 		color: $color-darkgrey;
 	}
 	.fa-circle {
 		color: $color-darkgrey;
 	}
 }
+
+
+/***********************************************
+                MEDIA QUERIES
+***********************************************/
+
+@import "_queries.scss";
