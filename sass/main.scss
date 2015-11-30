@@ -92,11 +92,10 @@ header h1 {
 
 header nav {
 	width: 100%;
-}
-
-header nav>ul li {
-	width: 100%;
-	float: none;
+	&>ul li {
+		width: 100%;
+		float: none;
+	}
 }
 
 section {
